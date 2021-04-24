@@ -38,4 +38,19 @@ public abstract class BaseObject {
         this.radius = radius;
         this.isAlive = true;
     }
+    public void draw() {
+
+    }
+
+    public void move() {
+
+    }
+
+    public void die() {
+        isAlive = false;
+    }
+
+    public boolean isIntersect(BaseObject o) {
+        return Math.abs(this.getX() - o.getX() + this.getY() - o.getY()) < Math.max(this.radius, o.radius);
+    }
 }
