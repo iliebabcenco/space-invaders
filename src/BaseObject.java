@@ -1,7 +1,7 @@
 public abstract class BaseObject {
-    private double x;
-    private double y;
-    private double radius;
+    protected double x;
+    protected double y;
+    protected double radius;
     private boolean isAlive;
 
     public boolean isAlive() {
@@ -38,8 +38,8 @@ public abstract class BaseObject {
         this.radius = radius;
         this.isAlive = true;
     }
-    public void draw() {
-
+    public void draw(Canvas canvas) {
+        //do nothing
     }
 
     public void move() {
