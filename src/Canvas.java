@@ -37,4 +37,21 @@ public class Canvas {
             }
         }
     }
+    public void clear() {
+        for (int i = 0; i < matrix.length; i ++) {
+            for (int j = 0; j < matrix[i].length; j ++) {
+                setPoint(j, i, ' ');
+            }
+        }
+    }
+
+    public void print() {
+        for (int i = 0; i < matrix.length; i ++) {
+            System.out.println("\n");
+            for (int j = 0; j < matrix[i].length; j ++) {
+                System.out.println(matrix[j][i]);
+            }
+        }
+    }
+
 }
