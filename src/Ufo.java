@@ -1,2 +1,2 @@
-public class Ufo {
+public class Ufo extends BaseObject{
 }

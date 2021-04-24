@@ -1,2 +1,2 @@
-public class SpaceShip {
+public class SpaceShip extends BaseObject{
 }

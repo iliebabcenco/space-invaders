@@ -1,2 +1,2 @@
-public class Rocket {
+public class Rocket extends BaseObject{
 }
