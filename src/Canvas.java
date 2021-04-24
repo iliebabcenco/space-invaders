@@ -20,4 +20,21 @@ public class Canvas {
     public char[][] getMatrix() {
         return matrix;
     }
+    public void setPoint(double x, double y, char c) {
+        int posX = (int) Math.round(x);
+        int posY = (int) Math.round(y);
+        if (0 <= posX && posX < matrix[0].length && 0 <= posY && posY < matrix.length) {
+            matrix[posY][posX] = c;
+        }
+    }
+
+    public void drawMatrix(double x, double y, int[][] matrix, char c) {
+        for (int i = 0; i < matrix.length; i ++) {
+            for (int j = 0; j < matrix[i].length; j ++) {
+                if (matrix[i][j] != 0) {
+                    setPoint(x + j, y + i, c);
+                }
+            }
+        }
+    }
 }
