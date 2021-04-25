@@ -1,5 +1,13 @@
 public class SpaceShip extends BaseObject{
-    private double dx;
+    private double dx = 0;
+
+    private static int[][] matrix = {
+            {0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0},
+            {1, 0, 1, 0, 1},
+            {1, 1, 1, 1, 1},
+    };
 
     public SpaceShip(double x, double y) {
         super(x, y, 3);
@@ -12,12 +20,12 @@ public class SpaceShip extends BaseObject{
     public void moveRight() {
         dx = 1;
     }
-
+    @Override
     public void move() {
         x += dx;
         this.checkBorders(0, Space.game.getWidth(), 0, Space.game.getHeight());
     }
-
+    @Override
     public void draw(Canvas canvas) {}
 
     public void fire() {
