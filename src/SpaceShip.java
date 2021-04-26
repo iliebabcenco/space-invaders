@@ -26,7 +26,9 @@ public class SpaceShip extends BaseObject{
         this.checkBorders(0, Space.game.getWidth(), 0, Space.game.getHeight());
     }
     @Override
-    public void draw(Canvas canvas) {}
+    public void draw(Canvas canvas) {
+        canvas.drawMatrix(x - radius + 1, y - radius + 1, matrix, 'M');
+    }
 
     public void fire() {
         Rocket rocket1 = new Rocket(x + 2, y);

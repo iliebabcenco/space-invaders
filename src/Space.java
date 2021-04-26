@@ -10,9 +10,6 @@ public class Space {
     private List<Rocket> rockets = new ArrayList<>();
     private List<Bomb> bombs = new ArrayList<>();
     public static Space game;
-    public static void main(String[] args) {
-
-    }
 
     public Space(int width, int height) {
         this.width = width;
@@ -86,8 +83,7 @@ public class Space {
     }
 
     public void moveAllItems() {
-        List<BaseObject> list = this.getAllItems();
-        for (BaseObject baseObject : list) {
+        for (BaseObject baseObject : this.getAllItems()) {
             baseObject.move();
         }
     }
@@ -102,8 +98,13 @@ public class Space {
     }
 
     public void createUfo() {
-        if (ufos.isEmpty()) {
-            Ufo ufo = new Ufo((float) width/2, 0);
+        if (ufos.size() > 0) return;
+
+        int random10 = (int) (Math.random() * 10);
+        if (random10 == 0) {
+            double x = Math.random() * width;
+            double y = Math.random() * height / 2;
+            ufos.add(new Ufo(x, y));
         }
     }
 
@@ -127,7 +128,7 @@ public class Space {
                     rocket.die();
                     ufo.die();
                 }
-                if (rocket.getY() < 0) {
+                if (rocket.getY() <= 0) {
                     rocket.die();
                 }
             }
@@ -139,8 +140,27 @@ public class Space {
         rockets.removeIf(rocket -> !rocket.isAlive());
         bombs.removeIf(bomb -> !bomb.isAlive());
     }
+
     public void draw(Canvas canvas) {
-        //тут нужно отрисовать все объекты игры
+        for (int i = 0; i < width + 2; i++) {
+            for (int j = 0; j < height + 2; j++) {
+                canvas.setPoint(i, j, '.');
+            }
+        }
+
+        for (int i = 0; i < width + 2; i++) {
+            canvas.setPoint(i, 0, '-');
+            canvas.setPoint(i, height + 1, '-');
+        }
+
+        for (int i = 0; i < height + 2; i++) {
+            canvas.setPoint(0, i, '|');
+            canvas.setPoint(width + 1, i, '|');
+        }
+
+        for (BaseObject object : getAllItems()) {
+            object.draw(canvas);
+        }
     }
 
     public static void sleep(int delay) {
@@ -148,5 +168,10 @@ public class Space {
             Thread.sleep(delay);
         } catch (InterruptedException ignored) {
         }
+    }
+    public static void main(String[] args) throws Exception {
+        game = new Space(20, 20);
+        game.setShip(new SpaceShip(10, 18));
+        game.run();
     }
 }

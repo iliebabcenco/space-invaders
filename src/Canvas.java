@@ -6,7 +6,7 @@ public class Canvas {
     public Canvas(int width, int height) {
         this.width = width;
         this.height = height;
-        this.matrix = new char[height][width];
+        this.matrix = new char[height + 2][width + 2];
     }
 
     public int getWidth() {
@@ -37,21 +37,25 @@ public class Canvas {
             }
         }
     }
+
     public void clear() {
-        for (int i = 0; i < matrix.length; i ++) {
-            for (int j = 0; j < matrix[i].length; j ++) {
-                setPoint(j, i, ' ');
-            }
-        }
+        this.matrix = new char[height + 2][width + 2];
     }
 
     public void print() {
-        for (int i = 0; i < matrix.length; i ++) {
-            System.out.println("\n");
-            for (int j = 0; j < matrix[i].length; j ++) {
-                System.out.println(matrix[j][i]);
+        System.out.println();
+
+        for (int i = 0; i < height + 2; i++) {
+            for (int j = 0; j < width + 2; j++) {
+                System.out.print(" ");
+                System.out.print(matrix[i][j]);
+                System.out.print(" ");
             }
+            System.out.println();
         }
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
 }

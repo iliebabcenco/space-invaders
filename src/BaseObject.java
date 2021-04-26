@@ -51,7 +51,11 @@ public abstract class BaseObject {
     }
 
     public boolean isIntersect(BaseObject o) {
-        return Math.abs(this.getX() - o.getX() + this.getY() - o.getY()) < Math.max(this.radius, o.radius);
+        double dx = x - o.x;
+        double dy = y - o.y;
+        double distance = Math.sqrt(dx * dx + dy * dy);
+        double distance2 = Math.max(radius, o.radius);
+        return distance <= distance2;
     }
 
     public void checkBorders(double minx, double maxx, double miny, double maxy) {
